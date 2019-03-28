@@ -4,3 +4,5 @@ Tue Mar 26 22:19:57 2019,60,Dosa
 Tue Mar 26 22:20:18 2019,70,Surf Excel
 Tue Mar 26 22:20:37 2019,90,Snacks
 Wed Mar 27 00:11:54 2019,200,Food
+Thu Mar 28 20:49:05 2019,40,Idly
+Thu Mar 28 20:49:51 2019,50,Rava Dosa
