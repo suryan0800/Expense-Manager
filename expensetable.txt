@@ -6,3 +6,14 @@ Tue Mar 26 22:20:37 2019,90,Snacks
 Wed Mar 27 00:11:54 2019,200,Food
 Thu Mar 28 20:49:05 2019,40,Idly
 Thu Mar 28 20:49:51 2019,50,Rava Dosa
+Tue Apr  2 18:53:25 2019,50,Rava Dosa
+Tue Apr  2 19:14:08 2019,100,Food
+Tue Apr  2 21:42:26 2019,1000,Watch
+Tue Apr  2 21:44:29 2019,2500,Spectacles
+Tue Apr  2 21:46:32 2019,500,Ear Phones
+Thu Apr  4 17:50:41 2019,100,Milk Shake
+Thu Apr  4 17:50:55 2019,100,Ice Cream
+Thu Apr  4 18:17:33 2019,450,Electricity Bill
+Thu Apr  4 18:20:33 2019,1500,Shirt
+Thu Apr  4 18:21:14 2019,2000,Bag
+Thu Apr  4 18:29:48 2019,600,Cable

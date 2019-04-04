@@ -38,7 +38,8 @@ sub checkdate1
 		}
 		elsif(@$d[1] == @$d1[1])
 		{
-			if(@$d[2] < @$d1[2])
+           
+			if( int(@$d[2]) < int(@$d1[2]))
 			{
 				return 'false';
 			}			
@@ -78,7 +79,8 @@ sub checkdate2
 		}
 		elsif(@$d[1] == @$d2[1])
 		{
-			if(@$d[2] > @$d2[2])
+            
+			if(int(@$d[2]) > int(@$d2[2]))
 			{
 				return 'false';
 			}
@@ -114,42 +116,184 @@ for($x = 0; $x < @l; $x++)
 	}	
 }
 
-print header().start_html("View Expense ");
+print header();
+
+print <<eof;
+<html>
+<head>
+<title> View Expense</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+<style>
+
+input
+{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  padding: 4px 15px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: normal;
+  width: 200px;
+  font-size: 20px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+
+h1 
+{
+	color : white;
+	font-family: 'Roboto', sans-serif;
+	padding : 10px;
+	border-bottom : 1px solid white;
+	width : 600px;
+	margin : auto;
+}
+
+h3
+{
+	color : white;
+	font-family: 'Roboto', sans-serif;
+	padding : 10px;
+	border-bottom : 1px solid white;
+	font-size: 20px;
+	font-weight: bolder;
+	width : 600px;
+	margin : auto;
+}
+
+p
+{
+	color : white; 
+	text-align : center; 
+	width : 500px; 
+	font-size: 20px;
+	margin : 20px auto;
+}
+
+table
+{
+	color : white; 
+	text-align : center; 
+	width : 600px; 
+	font-size: 20px;
+	margin : 20px auto;
+
+}
+
+</style>
+</head>
+<body style = "background : #002447; ">
+
+<div class = "container" style = "width : 1000px; margin : 100px auto; text-align : center;">		
+eof
+
+
 print CGI::center(h1("View Expense "));
 print CGI::center(start_form().
 p("From Date :",input({-type=>'date', -name=>'date1'})).
-p("To Date",input({-type=>'date', -name=>'date2'})).
+p("To Date :",input({-type=>'date', -name=>'date2'})).
 p(submit("Search"))).end_form();
 
 if($cgi->param("date1") && $cgi->param("date2"))
 {
-	
+	my @list4;
 	$spendings = 0;
-	print 	CGI::center(p("Expense Table for the Dates : ".$cgi->param("date1")." To ".
+	print 	CGI::center(h3("Expense Table for the Dates : ".$cgi->param("date1")." To ".
 	$cgi->param("date2")));
 	my @date1 = split /-/,$cgi->param('date1');
 	my @date2 = split /-/,$cgi->param('date2');
-	
+	my $f=0;
+    my @dat;
 	print "<font size='6'><center><table border=1 width='1000' >";
+
 	foreach $x(@list)
 	{
-		@date = split (/ /,@$x[0]);
-		$date[1] = $month{$date[1]};
+       
+        @date = split (/  /,@$x[0]);      
+        @dat = split (/ /,$date[1]);
+        @date = split (/ /,@$x[0]);
+        if ( @dat )
+        {
+            $date[2] = "0"."$dat[0]";
+            for( my $e = 3 ; $e < @date ; $e++)
+            {
+            $date[$e] = $date[$e+1];
+            }
+        }
+        if ( !@dat )
+        {
+         @date = split (/ /,@$x[0]);
+        }
+        $date[1] = $month{$date[1]};
 		
 		my $check1 = checkdate1(\@date,\@date1,\@date2);
 		my $check2 = checkdate2(\@date,\@date1,\@date2);
 		if($check1 eq 'true' && $check2 eq 'true')
 		{
-
-			$spendings += @$x[1]; 
+            $spendings += @$x[1]; 
+            my $as = @$x[1];
+            my $bs = @$x[2];
 			print "<tr><td>@$x[0]</td><td>@$x[1]</td><td>@$x[2]</td></tr>";
+			$list4[$f][0] = $as;
+            $list4[$f][1] = $bs;
+            $f++;
 		}	
 	}
 	print "</table></center></font>";
 	print CGI::center(p("Total Spendings  "." $spendings"));
+
+    
+     
+    
+     my @req ;
+     for($x=0; $x < @list4 ; $x++)
+     {
+     
+      $req[$x]= $list4[$x][1] ;
+     
+     }
+
+     my %unique = ();
+     foreach my $item (@req)
+     {
+        $unique{$item} =1;
+     }
+     my @myuniquearray = keys %unique;
+
+     my @sumunique ;
+     my $y = 0;
+
+     foreach my $item (@myuniquearray)
+     {
+        my $sm=0;
+        for($x=0; $x < @list4 ; $x++)
+        {
+            if ($item eq $list4[$x][1])
+            {
+             $sm = $sm + $list4[$x][0];
+            }
+        }
+        $sumunique[$y]= $sm ;
+        $y ++;
+     }
+
+     print "<font size='6'><center><table border=1 width='1000' >";
+
+     print br();
+     print CGI::center(h3(" Itemwise Spendings "));
+
+      for($x=0; $x < @myuniquearray ; $x++)
+      {
+        print "<tr><td>$myuniquearray[$x]</td><td>$sumunique[$x]</td></tr>";
+      }
+
+     print "</table></center></font>";
 	
 }
 
+print "</div>";
 print end_html();
 
 
