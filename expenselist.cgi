@@ -125,6 +125,22 @@ print <<eof;
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 <style>
 
+button {
+  background-color: #778899;
+   border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 input
 {
   background-color: white;
@@ -177,7 +193,10 @@ table
 	color : white; 
 	text-align : center; 
 	width : 600px; 
+	font-style : bold;
 	font-size: 20px;
+	border : 1px solid black;
+	#background-color : #aabbcc;
 	margin : 20px auto;
 
 }
@@ -186,7 +205,11 @@ table
 </head>
 <body style = "background : #002447; ">
 
-<div class = "container" style = "width : 1000px; margin : 100px auto; text-align : center;">		
+<a href = "main.cgi"><button type = "button" >Home</button></a>	
+
+<div class = "container" style = "width : 1000px; margin : 100px auto; text-align : center;">	
+
+
 eof
 
 

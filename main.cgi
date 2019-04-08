@@ -19,12 +19,12 @@ button {
    border: 2px solid black;
   border-radius: 5px;
   color: black;
-  padding: 15px 32px;
+  padding: 15px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-weight: bold;
-  width: 250px;
+  width: 200px;
   font-size: 20px;
   margin: 4px 2px;
   cursor: pointer;

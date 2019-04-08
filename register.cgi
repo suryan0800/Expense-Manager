@@ -18,6 +18,22 @@ print <<eof;
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 <style>
 
+button {
+  background-color: #778899;
+   border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 input
 {
   background-color: white;
@@ -56,6 +72,8 @@ p
 </style>
 </head>
 <body style = "background : #002447; ">
+
+<a href = "main.cgi"><button type = "button" >Home</button></a>	
 
 <div class = "container" style = "width : 700px; margin : 100px auto; text-align : center;">		
 eof
