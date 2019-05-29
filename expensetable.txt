@@ -17,3 +17,4 @@ Thu Apr  4 18:17:33 2019,450,Electricity Bill
 Thu Apr  4 18:20:33 2019,1500,Shirt
 Thu Apr  4 18:21:14 2019,2000,Bag
 Thu Apr  4 18:29:48 2019,600,Cable
+Wed May 29 14:37:12 2019,90,Meals

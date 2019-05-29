@@ -230,7 +230,7 @@ if($cgi->param("date1") && $cgi->param("date2"))
 	my $f=0;
     my @dat;
 	print "<font size='6'><center><table border=1 width='1000' >";
-
+	print "<tr><td>Date</td><td>Amount</td><td>Product</td></tr>";
 	foreach $x(@list)
 	{
        
@@ -302,10 +302,13 @@ if($cgi->param("date1") && $cgi->param("date2"))
         $y ++;
      }
 
-     print "<font size='6'><center><table border=1 width='1000' >";
-
      print br();
      print CGI::center(h3(" Itemwise Spendings "));
+
+     print "<font size='6'><center><table border=1 width='1000' >";
+     print "<tr><td>Product</td><td>Amount</td></tr>";
+
+    
 
       for($x=0; $x < @myuniquearray ; $x++)
       {
